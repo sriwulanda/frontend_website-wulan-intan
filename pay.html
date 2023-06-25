@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pembayaran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('./images/Pembayaran.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: auto;
+      background-position: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: none;
+      border-radius: 5px;
+      color: rgb(255, 255, 255);
+    }
+
+    .payment-form {
+      border: 1px solid #ccc;
+      padding: 22px;
+      border-radius: 5px;
+    }
+
+    .payment-form h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .notification {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="payment-form">
+      <h2>Pembayaran</h2>
+      <div id="notification" class="notification"></div>
+      <div class="form-group">
+        <label for="name">Nama</label>
+        <input type="text" id="name" placeholder="Masukkan nama">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Masukkan email">
+      </div>
+      <div class="form-group">
+        <label for="amount">Jumlah</label>
+        <input type="number" id="amount" placeholder="Masukkan jumlah">
+      </div>
+      <div class="form-group">
+        <label for="payment-method">Metode Pembayaran</label>
+        <select id="payment-method">
+          <option value="dana">DANA</option>
+          <option value="shopeepay">ShopeePay</option>
+          <option value="atm">ATM Transfer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="payment-amount">Jumlah Uang yang akan Dibayar</label>
+        <input type="number" id="payment-amount" placeholder="Masukkan jumlah uang yang akan dibayar">
+      </div>
+      <div class="form-group">
+        <button onclick="submitPayment()">Bayar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitPayment() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var amount = document.getElementById("amount").value;
+      var paymentMethod = document.getElementById("payment-method").value;
+      var paymentAmount = document.getElementById("payment-amount").value;
+
+      // Periksa apakah semua form telah diisi
+      if (name === "" || email === "" || amount === "" || paymentMethod === "" || paymentAmount === "") {
+        alert("Mohon lengkapi semua form sebelum melakukan pembayaran.");
+        return;
+      }
+
+      // Kirim data ke server atau lakukan aksi lainnya
+      console.log("Nama: " + name);
+      console.log("Email: " + email);
+      console.log("Jumlah: " + amount);
+      console.log("Metode Pembayaran: " + paymentMethod);
+      console.log("Jumlah Uang yang akan Dibayar: " + paymentAmount);
+
+      // Tampilkan notifikasi pembayaran selesai
+      var notification = document.getElementById("notification");
+      notification.style.display = "block";
+      notification.innerHTML = "Pembayaran selesai/berhasil";
+    }
+  </script>
+</body>
+</html>
